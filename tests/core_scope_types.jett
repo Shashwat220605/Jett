@@ -1,0 +1,18 @@
+// Core language regression tests
+
+Int outer is 10;
+
+if outer > 5 {
+    Int inner is 20;
+    print(inner);
+}
+
+Int[] values is [1, 2, 3];
+values[1] = 42;
+print(values[1]);
+print(length(values));
+
+Bool ready is true;
+if ready {
+    print("ready");
+}
