@@ -2,8 +2,9 @@
   "name": "jett-language",
   "displayName": "Jett Language",
   "description": "Language support for the Jett programming language.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "jett-lang",
+  "license": "SEE LICENSE IN ../LICENSE",
   "engines": {
     "vscode": "^1.85.0"
   },
@@ -20,7 +21,15 @@
         ],
         "extensions": [
           ".jett"
-        ]
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "jett",
+        "scopeName": "source.jett",
+        "path": "./syntaxes/jett.tmLanguage.json"
       }
     ],
     "iconThemes": [
