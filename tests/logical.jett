@@ -1,0 +1,6 @@
+Bool a is true;
+Bool b is false;
+
+print(a && b);
+print(a || b);
+print(!a);
