@@ -1,6 +1,6 @@
 # Jett
 
-![Jett Banner](assests/jett-banner.png)
+![Jett Banner](assets/jett-banner.png)
 
 **FAST • SIMPLE • POWERFUL**
 
