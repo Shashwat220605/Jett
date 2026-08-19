@@ -1,0 +1,10 @@
+Int i is 0;
+
+while i < 5 {
+    print(i);
+    i = i + 1;
+}
+
+for Int j is 0; j < 3; j = j + 1 {
+    print(j);
+}

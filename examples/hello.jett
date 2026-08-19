@@ -1,0 +1,58 @@
+// ========================================
+// Jett Final Integration Test
+// ========================================
+
+fn add(Int a, Int b) {
+    return a + b;
+}
+
+Int x is 10;
+Int y is 5;
+
+print(x);
+print(y);
+
+if x > y {
+    print("x is greater");
+} else {
+    print("y is greater");
+}
+
+Int count is 0;
+
+while count < 3 {
+    print(count);
+    count = count + 1;
+}
+
+for Int i is 0; i < 5; i = i + 1 {
+    if i == 2 {
+        continue;
+    }
+
+    if i == 4 {
+        break;
+    }
+
+    print(i);
+}
+
+Bool a is true;
+Bool b is false;
+
+print(a && b);
+print(a || b);
+print(!a);
+
+Int[] nums is [10, 20, 30];
+
+print(nums[0]);
+print(nums[1]);
+print(nums[2]);
+
+nums[1] = 99;
+
+print(nums[1]);
+print(length(nums));
+
+print(add(x, y));

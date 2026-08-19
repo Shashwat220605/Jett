@@ -1,0 +1,3 @@
+Str name is input("Enter your name: ");
+
+print("Hello " + name);

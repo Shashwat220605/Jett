@@ -1,0 +1,9 @@
+Int[] nums is [10, 20, 30, 40];
+
+print(nums[0]);
+print(nums[3]);
+
+nums[2] = 99;
+
+print(nums[2]);
+print(length(nums));

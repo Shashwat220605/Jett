@@ -1,0 +1,10 @@
+{
+  "iconDefinitions": {
+    "_jett": {
+      "iconPath": "./icons/jett-jett.png"
+    }
+  },
+  "fileExtensions": {
+    "jett": "_jett"
+  }
+}

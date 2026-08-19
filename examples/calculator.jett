@@ -1,0 +1,8 @@
+Int a is 20;
+Int b is 5;
+
+print(a + b);
+print(a - b);
+print(a * b);
+print(a / b);
+print(a % b);

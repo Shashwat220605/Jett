@@ -1,0 +1,7 @@
+fn multiply(Int a, Int b) {
+    return a * b;
+}
+
+Int result is multiply(6, 7);
+
+print(result);
