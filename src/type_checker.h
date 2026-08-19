@@ -8,178 +8,60 @@
 
 enum class JettType
 {
-    INT,
-    FL,
-    DOUB,
-    STR,
-    BOOL,
-    CHAR,
-    BYTE,
-    LONG,
-    VOID,
-
-    INT_ARRAY,
-    FL_ARRAY,
-    DOUB_ARRAY,
-    STR_ARRAY,
-    BOOL_ARRAY,
-    CHAR_ARRAY,
-    BYTE_ARRAY,
-    LONG_ARRAY,
-
+    INT, FL, DOUB, STR, BOOL, CHAR, BYTE, LONG, VOID,
+    INT_ARRAY, FL_ARRAY, DOUB_ARRAY, STR_ARRAY,
+    BOOL_ARRAY, CHAR_ARRAY, BYTE_ARRAY, LONG_ARRAY,
     UNKNOWN
 };
 
 class TypeChecker
 {
 public:
-
-    void check(
-        const Program& program
-    );
-
+    void check(const Program& program);
     bool hasErrors() const;
-
-    const std::vector<std::string>&
-    getErrors() const;
+    const std::vector<std::string>& getErrors() const;
 
 private:
+    struct FunctionInfo
+    {
+        std::vector<JettType> parameterTypes;
+        JettType returnType = JettType::UNKNOWN;
+    };
 
-    // ========================================================
-    // Statements
-    // ========================================================
+    void checkStatement(const Statement* statement);
+    void checkIfStatement(const IfStmt* statement);
+    void checkWhileStatement(const WhileStmt* statement);
+    void checkForStatement(const ForStmt* statement);
+    void checkFunctionStatement(const FunctionStmt* statement);
+    void checkReturnStatement(const ReturnStmt* statement);
+    void checkBreakStatement(const BreakStmt* statement);
+    void checkContinueStatement(const ContinueStmt* statement);
+    void checkVariableDeclaration(const VariableDeclarationStmt* statement);
+    void checkExpressionStatement(const ExpressionStmt* statement);
 
-    void checkStatement(
-        const Statement* statement
-    );
+    JettType checkExpression(const Expression* expression);
+    JettType checkLiteral(const LiteralExpr* expression);
+    JettType checkArrayLiteral(const ArrayLiteralExpr* expression);
+    JettType checkVariable(const VariableExpr* expression);
+    JettType checkBinary(const BinaryExpr* expression);
+    JettType checkUnary(const UnaryExpr* expression);
+    JettType checkCall(const CallExpr* expression);
+    JettType checkIndex(const IndexExpr* expression);
+    JettType checkIndexAssignment(const IndexAssignmentExpr* expression);
 
-    void checkIfStatement(
-        const IfStmt* statement
-    );
+    JettType typeFromName(const std::string& name) const;
+    JettType arrayElementType(JettType type) const;
+    bool isArray(JettType type) const;
+    bool isNumeric(JettType type) const;
+    bool isAssignable(JettType expected, JettType actual) const;
+    std::string typeToString(JettType type) const;
+    void typeError(const ASTNode* node, const std::string& message);
 
-    void checkWhileStatement(
-        const WhileStmt* statement
-    );
+    std::unordered_map<std::string, JettType> variables;
+    std::unordered_map<std::string, FunctionInfo> functions;
+    std::vector<std::string> errors;
 
-    void checkForStatement(
-        const ForStmt* statement
-    );
-
-    void checkFunctionStatement(
-        const FunctionStmt* statement
-    );
-
-    void checkReturnStatement(
-        const ReturnStmt* statement
-    );
-
-    void checkBreakStatement(
-        const BreakStmt* statement
-    );
-
-    void checkContinueStatement(
-        const ContinueStmt* statement
-    );
-
-    void checkVariableDeclaration(
-        const VariableDeclarationStmt* statement
-    );
-
-    void checkExpressionStatement(
-        const ExpressionStmt* statement
-    );
-
-    // ========================================================
-    // Expressions
-    // ========================================================
-
-    JettType checkExpression(
-        const Expression* expression
-    );
-
-    JettType checkLiteral(
-        const LiteralExpr* expression
-    );
-
-    JettType checkArrayLiteral(
-        const ArrayLiteralExpr* expression
-    );
-
-    JettType checkVariable(
-        const VariableExpr* expression
-    );
-
-    JettType checkBinary(
-        const BinaryExpr* expression
-    );
-
-    JettType checkUnary(
-        const UnaryExpr* expression
-    );
-
-    JettType checkCall(
-        const CallExpr* expression
-    );
-
-    JettType checkIndex(
-        const IndexExpr* expression
-    );
-
-    JettType checkIndexAssignment(
-    const IndexAssignmentExpr* expression
-);
-
-    // ========================================================
-    // Type helpers
-    // ========================================================
-
-    JettType typeFromName(
-        const std::string& name
-    ) const;
-
-    JettType arrayElementType(
-        JettType type
-    ) const;
-
-    bool isArray(
-        JettType type
-    ) const;
-
-    bool isNumeric(
-        JettType type
-    ) const;
-
-    bool isAssignable(
-        JettType expected,
-        JettType actual
-    ) const;
-
-    std::string typeToString(
-        JettType type
-    ) const;
-
-    // ========================================================
-    // Error handling
-    // ========================================================
-
-    void typeError(
-        const ASTNode* node,
-        const std::string& message
-    );
-
-    // ========================================================
-    // Variables
-    // ========================================================
-
-    std::unordered_map<
-        std::string,
-        JettType
-    > variables;
-
-    // ========================================================
-    // Errors
-    // ========================================================
-
-    std::vector<std::string>
-        errors;
+    const FunctionStmt* currentFunction = nullptr;
+    JettType inferredReturnType = JettType::UNKNOWN;
+    bool checkingFunction = false;
 };
