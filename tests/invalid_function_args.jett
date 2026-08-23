@@ -1,0 +1,5 @@
+fn add(Int a, Int b) {
+    return a + b;
+}
+
+print(add(10));

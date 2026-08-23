@@ -1,0 +1,15 @@
+Int total is 0;
+
+for Int i is 0; i < 6; i = i + 1 {
+    if i == 2 {
+        continue;
+    }
+
+    if i == 5 {
+        break;
+    }
+
+    total = total + i;
+}
+
+print(total);

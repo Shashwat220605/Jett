@@ -1,0 +1,5 @@
+fn greet(Str name) {
+    print(name);
+}
+
+greet("Jett");

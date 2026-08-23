@@ -1,0 +1,6 @@
+Str name is "Jett";
+Char letter is 'J';
+
+print(name);
+print(letter);
+print(length(name));

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Jett",
+  "scopeName": "source.jett",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#numbers" },
+    { "include": "#keywords" },
+    { "include": "#types" },
+    { "include": "#constants" },
+    { "include": "#operators" },
+    { "include": "#functions" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        { "name": "comment.line.double-slash.jett", "match": "//.*$" },
+        { "name": "comment.block.jett", "begin": "/\\*", "end": "\\*/" }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        { "name": "string.quoted.double.jett", "begin": "\"", "end": "\"", "patterns": [{ "name": "constant.character.escape.jett", "match": "\\\\." }] },
+        { "name": "string.quoted.single.jett", "begin": "'", "end": "'", "patterns": [{ "name": "constant.character.escape.jett", "match": "\\\\." }] }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        { "name": "constant.numeric.float.jett", "match": "\\b[0-9]+\\.[0-9]+\\b" },
+        { "name": "constant.numeric.integer.jett", "match": "\\b[0-9]+\\b" }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        { "name": "keyword.control.jett", "match": "\\b(if|else|while|for|switch|case|default|break|continue|return)\\b" },
+        { "name": "keyword.declaration.jett", "match": "\\b(fn|use|is)\\b" }
+      ]
+    },
+    "types": {
+      "patterns": [
+        { "name": "storage.type.jett", "match": "\\b(Int|Fl|Doub|Str|Bool|Char|Byte|Long|Void)\\b" }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        { "name": "constant.language.jett", "match": "\\b(true|false)\\b" }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        { "name": "keyword.operator.jett", "match": "(===|==|!=|>=|<=|&&|\\|\\||<<|>>|\\+=|-=|\\*=|/=|%=|\\+\\+|--|->|[+*/%<>=!&|^~-])" }
+      ]
+    },
+    "functions": {
+      "patterns": [
+        { "name": "entity.name.function.jett", "match": "\\b[a-zA-Z_][a-zA-Z0-9_]*(?=\\s*\\()" }
+      ]
+    }
+  }
+}

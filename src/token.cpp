@@ -1,7 +1,5 @@
 #include "token.h"
 
-#include "token.h"
-
 std::string tokenTypeToString(TokenType type)
 {
     switch (type)
