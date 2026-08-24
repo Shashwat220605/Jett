@@ -6,6 +6,13 @@
 
 Jett is a lightweight interpreted programming language built from scratch in C++.
 
+> [!WARNING]
+> **Project status: Incomplete / Experimental**
+>
+> Jett is an ongoing, unfinished project and should not be considered a production-ready programming language. This project was primarily an attempt to explore what it takes to design and build a programming language in a professional, structured way, from the lexer and parser through type checking, interpretation, testing, documentation, and tooling.
+>
+> Some features are implemented and functional, while other parts are still experimental or incomplete. The repository is kept as a record of the project, its architecture, experiments, and continued learning.
+
 ## What's new in 1.1
 
 Jett now includes a richer command-line workflow for inspecting and validating programs before execution.
@@ -18,6 +25,24 @@ jett --ast <file.jett>      Inspect the parsed AST
 jett --help                 Show CLI help
 jett --version              Show version
 ```
+
+## Project Goals
+
+The goal of Jett was not simply to make another toy interpreter. It was an attempt to approach language development as a real software-engineering project, including:
+
+- A structured compiler/interpreter pipeline
+- A dedicated lexer and parser
+- An Abstract Syntax Tree (AST)
+- Static type checking
+- A tree-walk interpreter
+- Automated testing
+- Cross-platform CMake builds
+- GitHub Actions CI
+- Documentation and architecture guides
+- VS Code language tooling
+- A dedicated syntax and file format
+
+The project is incomplete, but it represents an exploration of how a programming language can be designed, implemented, documented, tested, and maintained in a professional way.
 
 ## Features
 
