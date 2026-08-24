@@ -6,22 +6,18 @@
 
 Jett is a lightweight interpreted programming language built from scratch in C++.
 
-## Copyright
+## What's new in 1.1
 
-Copyright © 2026 Shashwat Ghadge. All rights reserved.
+Jett now includes a richer command-line workflow for inspecting and validating programs before execution.
 
-The Jett source code, name, logos, artwork, and branding are proprietary unless a separate license explicitly says otherwise. See `LICENSE` for the project license terms.
-
-## Branding Assets
-
-The `assets/` directory contains Jett's official branding assets.
-
-- `jett-logo.png` - main logo
-- `jett-wordmark.png` - wordmark
-- `jett-banner.png` - README/GitHub banner
-- `tagline.png` - brand tagline
-- `jett-mark.png` - compact Jett mark
-- `jett-jett.png` - `.jett` / VS Code file icon
+```text
+jett <file.jett>            Run a program
+jett --check <file.jett>    Type-check without executing
+jett --tokens <file.jett>   Inspect lexer output
+jett --ast <file.jett>      Inspect the parsed AST
+jett --help                 Show CLI help
+jett --version              Show version
+```
 
 ## Features
 
@@ -39,6 +35,7 @@ The `assets/` directory contains Jett's official branding assets.
 - Arrays and indexing
 - `print()` and `input()`
 - String utilities
+- CLI inspection and validation modes
 - `--help` and `--version`
 - `.jett` source files
 - VS Code language support with syntax highlighting and Jett file icons
@@ -56,6 +53,24 @@ cmake --build build --config Release
 
 ```powershell
 .\\build\\Release\\jett.exe .\\examples\\hello.jett
+```
+
+### Validate without running
+
+```powershell
+.\\build\\Release\\jett.exe --check .\\examples\\functions.jett
+```
+
+### Inspect tokens
+
+```powershell
+.\\build\\Release\\jett.exe --tokens .\\examples\\hello.jett
+```
+
+### Inspect the AST
+
+```powershell
+.\\build\\Release\\jett.exe --ast .\\examples\\functions.jett
 ```
 
 ### CLI
@@ -165,7 +180,7 @@ The GitHub Actions workflow also builds Jett on Ubuntu and Windows and runs the 
 
 ## Version
 
-**Jett 1.0.0**
+**Jett 1.1.0**
 
 ## License
 
